@@ -1,20 +1,24 @@
 var async = require('async');
 var fs = require('fs');
-
-var files = ['test1.txt','test2.txt','test3.txt'];
-
-var obj = {
-    f1: 'test1.txt',
-    f2: 'test2.txt',
-    f3: 'test3.txt'
-};
+var util = require('util');
 
 
-async.reduce(files,'hello',function(total,item,callback){
-    fs.readFile(item,function(err,res){
-        if(err)callback(err);
-        callback(null,total + res);
-    });
+async.autoInject({
+    func1: function(callback){
+        process.nextTick(function(){
+            callback(null,'func1');
+        });
+    },
+    func2: function(callback){
+        process.nextTick(function(){
+            callback(null,'func2');
+        });
+    },
+    func3: function(func1,func2,callback){
+        console.log(func1);
+        console.log(func2);
+        callback(null,'func3');
+    }
 },function(err,res){
     console.log(res);
 });

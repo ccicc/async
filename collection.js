@@ -183,7 +183,7 @@ async.reduce(files, 'hello,', function (init, file, callback) {
 
 /*** async.reject ***/
 
-// async.reject()  与filter作用相反，排除异步操作为真的值
+// async.reject()  与async.filter()作用相反，排除异步操作为真的值
 async.reject(files, function (item, callback) {
     fs.readFile(item, function (err, res) {
         callback(err, res.toString() === 'test1');
