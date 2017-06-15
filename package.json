@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "async": "^2.4.1",
+    "bluebird": "^3.5.0",
+    "mongoose": "^4.10.6"
+  }
+}
