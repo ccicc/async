@@ -27,3 +27,7 @@ exports.log = function(msg,obj){
     }
 };
 
+exports.wait = function(mils){
+    var now = new Date;
+    while(new Date - now <= mils);
+};
